@@ -22,7 +22,7 @@ service.interceptors.request.use((config) => {
 
 // 响应拦截器
 service.interceptors.response.use(({ data }) => {
-  const code: number = data.data.code
+  const code: number = data.code
   if (code != 200) {
     return Promise.reject(data)
   }
