@@ -28,11 +28,13 @@ import { LoginData } from "@/type/login";
 import { login } from "@/request/api";
 import { FormInstance, ElMessage } from 'element-plus';
 import { defineComponent, reactive, toRefs, ref } from 'vue';
-import router from "@/router";
+import {useRouter} from "vue-router";
 
 export default defineComponent({
   setup() {
     const data = reactive(new LoginData())
+
+    const router = useRouter()
 
     const rules = {
       username: [
@@ -80,9 +82,13 @@ export default defineComponent({
               ElMessage({ type: 'success', message: '登录成功！'})
               router.push('/')
             }).catch( e => {
+              console.log('登录异常', e)
               ElMessage({ type: 'warning', message: '登录失败，用户名或密码错误' })
             })
-        }
+          } else {
+            console.log('error submit!')
+            return false
+          }
       })
     }
 
