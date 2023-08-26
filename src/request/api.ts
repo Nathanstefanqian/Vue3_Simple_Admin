@@ -34,3 +34,10 @@ export function getRoleList() {
   })
 }
 
+export function getAuthorityList() {
+  return service({
+    url: "/getAuthorityList",
+    method: "get"
+  })
+}
+

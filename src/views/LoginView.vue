@@ -9,7 +9,7 @@
   >
     <h2>后台管理系统</h2>
     <el-form-item label="账号" prop="username">
-      <el-input v-model="ruleForm.username" type="password" autocomplete="off" />
+      <el-input v-model="ruleForm.username" type="text" autocomplete="off" />
     </el-form-item>
     <el-form-item label="密码" prop="password">
       <el-input v-model="ruleForm.password" type="password" autocomplete="off" />
@@ -83,6 +83,8 @@ export default defineComponent({
               router.push('/')
             }).catch( e => {
               console.log('登录异常', e)
+              localStorage.setItem("token", e.data.token)
+              router.push('/')
               ElMessage({ type: 'warning', message: '登录失败，用户名或密码错误' })
             })
           } else {

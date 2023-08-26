@@ -17,7 +17,7 @@
         <el-table-column prop="title" label="标题" width="180" />
         <el-table-column prop="introduce" label="详情" />
       </el-table>
-      <el-pagination @current-change='currentChange' @size-change="sizeChange" layout="prev, pager, next" :total="selectData.count" />
+      <el-pagination @current-change="currentChange" @size-change="sizeChange" layout="prev, pager, next" :total="selectData.count" />
     </div>
   </div>
 </template>
@@ -36,7 +36,6 @@ export default defineComponent({
 
     const getGoods = () => {
       getGoodsList().then( res => {
-        console.log(res.data)
         data.list = res.data
         data.selectData.count = res.data.length
       }).catch(err => console.log('报错',err))
